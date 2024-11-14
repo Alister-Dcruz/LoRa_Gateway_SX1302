@@ -26,6 +26,7 @@ try:
 
     # Reboot the Raspberry Pi
     os.system('sudo reboot')  # Execute the reboot command
+    print("GSM module has been reset")
 except Exception as e:
     print(f"An error occurred: {e}")
 finally:
