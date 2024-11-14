@@ -7,9 +7,15 @@ function restart_gsm_module() {
     // Execute the Python script
     $output = shell_exec('sudo  /usr/bin/python3 '.escapeshellarg($pythonScript).' 2>&1');
     
-    return "GSM module is restarting...";
-   
+    // Check if the output contains any success message or log
+    if (strpos($output, 'GSM module has been reset') !== false) {
+        echo "Script executed successfully!<br>";
+    } else {
+        echo "Script execution failed or did not produce expected output.<br>";
+    }
 
+    // Display output for debugging
+    echo "<pre>$output</pre>";
 }
 
 // Restart the GSM module and return the response to the user
